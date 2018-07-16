@@ -2,9 +2,12 @@ package com.twu.biblioteca;
 
 import com.twu.biblioteca.repositories.BookRepository;
 
+import java.util.Scanner;
+
 public class BibliotecaSystem {
     public static final String WELCOME_BIBLIOTECA_SYSTEM = "WELCOME BIBLIOTECA SYSTEM!\r\n";
     private BookRepository bookRepository;
+    private Scanner scanner;
 
     public BookRepository getBookRepository() {
         return bookRepository;
@@ -29,4 +32,22 @@ public class BibliotecaSystem {
 
     }
 
+    public void setScanner(Scanner scanner) {
+        this.scanner = scanner;
+
+    }
+
+    public Scanner getScanner() {
+        return scanner;
+    }
+
+    public void warningValidOption() {
+    }
+
+    public void mainMenu() {
+
+    }
+
+    public void chooseItem() {
+    }
 }
