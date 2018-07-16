@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import com.sun.xml.internal.messaging.saaj.util.ByteInputStream;
 import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.repositories.BookRepository;
 import org.junit.Assert;
@@ -8,19 +7,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Date;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class BibliotecaSystemTest {
 
     public static final String WELCOME_BIBLIOTECA_SYSTEM = "WELCOME BIBLIOTECA SYSTEM!\r\n";
     public static final String DISPLAY_BOOK_LIST = "1.List Books\r\n";
+    public static final String SELECT_A_VALID_OPTION = "Select a valid option!\r\n";
     private ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
     private BibliotecaSystem bibliotecaSystem = new BibliotecaSystem();
     private BookRepository bookRepository;
@@ -51,14 +50,16 @@ public class BibliotecaSystemTest {
 
     @Test
     public void testMainMenu() {
-        bibliotecaSystem=mock(BibliotecaSystem.class);
-        Scanner in = mock(Scanner.class);
+        BibliotecaScanner in = mock(BibliotecaScanner.class);
         bibliotecaSystem.setScanner(in);
-        when(in.nextInt()).thenReturn(1,100);
+        when(in.readInt()).thenReturn(1,100);
         bibliotecaSystem.mainMenu();
         Assert.assertTrue(outputStream.toString().startsWith(DISPLAY_BOOK_LIST));
         bibliotecaSystem.chooseItem();
-        verify(bibliotecaSystem,times(1)).displayBookList();
-        verify(bibliotecaSystem,times(1)).warningValidOption();
+        Assert.assertTrue(outputStream.toString().endsWith(
+                "Book Name:The Wealth of the Nations\r\nAuthor:Adam Smith\r\nPublish Year:2012\r\n\r\n" +
+                        "Book Name:Moral Sentiment Theory\r\nAuthor:Adam Smith\r\nPublish Year:2012\r\n\r\n"));
+        bibliotecaSystem.chooseItem();
+        Assert.assertTrue(outputStream.toString().endsWith(SELECT_A_VALID_OPTION));
     }
 }

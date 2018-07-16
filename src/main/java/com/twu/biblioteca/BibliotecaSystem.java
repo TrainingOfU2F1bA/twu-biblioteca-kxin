@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class BibliotecaSystem {
     public static final String WELCOME_BIBLIOTECA_SYSTEM = "WELCOME BIBLIOTECA SYSTEM!\r\n";
     private BookRepository bookRepository;
-    private Scanner scanner;
+    private BibliotecaScanner scanner;
 
     public BookRepository getBookRepository() {
         return bookRepository;
@@ -32,22 +32,26 @@ public class BibliotecaSystem {
 
     }
 
-    public void setScanner(Scanner scanner) {
+    public void setScanner(BibliotecaScanner scanner) {
         this.scanner = scanner;
 
     }
 
-    public Scanner getScanner() {
+    public BibliotecaScanner getScanner() {
         return scanner;
     }
 
     public void warningValidOption() {
+        System.out.print("Select a valid option!\r\n");
     }
 
     public void mainMenu() {
-
+        System.out.print("1.List Books\r\n");
     }
 
     public void chooseItem() {
+        int i = scanner.readInt();
+        if (i==1) displayBookList();
+        else warningValidOption();
     }
 }
