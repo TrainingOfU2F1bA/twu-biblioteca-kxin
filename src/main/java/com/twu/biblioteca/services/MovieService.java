@@ -17,4 +17,10 @@ public class MovieService {
             );
         });
     }
+
+    public void checkoutMovie(long id) {
+        if (movieRepository.find(id)==null) {
+            System.out.print("Invalid Movie ID!\r\n");
+        }else System.out.print("Just Enjoy the Movie at Home!\r\n");
+    }
 }

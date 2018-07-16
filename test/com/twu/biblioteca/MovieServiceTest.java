@@ -18,8 +18,7 @@ public class MovieServiceTest {
     @Before
     public void setUp() {
         service = new MovieService();
-        MovieRepository repository = new MovieRepositoryImpl();
-        service.setMovieRepository(repository);
+        service.setMovieRepository(new MovieRepositoryImpl());
         out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
     }
@@ -32,4 +31,11 @@ public class MovieServiceTest {
         Assert.assertTrue(out.toString().endsWith(s));
     }
 
+    @Test
+    public void testCheckOut() {
+        service.checkoutMovie(1l);
+        Assert.assertTrue(out.toString().endsWith("Just Enjoy the Movie at Home!\r\n"));
+        service.checkoutMovie(-8l);
+        Assert.assertTrue(out.toString().endsWith("Invalid Movie ID!\r\n"));
+    }
 }
