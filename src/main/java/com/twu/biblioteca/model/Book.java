@@ -3,6 +3,7 @@ package com.twu.biblioteca.model;
 import java.util.Date;
 
 public class Book {
+    private Long id;
     private String bookName;
     private String authorName;
     private Date publishDate;
@@ -12,6 +13,13 @@ public class Book {
     }
 
     public Book(String bookName, String authorName, Date publishDate) {
+        this.bookName = bookName;
+        this.authorName = authorName;
+        this.publishDate = publishDate;
+    }
+
+    public Book(Long id, String bookName, String authorName, Date publishDate) {
+        this.id = id;
         this.bookName = bookName;
         this.authorName = authorName;
         this.publishDate = publishDate;
