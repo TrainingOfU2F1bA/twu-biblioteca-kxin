@@ -42,7 +42,6 @@ public class BookServiceTest {
     @Test
     public void testCheckout() {
         bookService.checkoutBook(1l);
-//        Assert.assertEquals(out.toString(),"Dsad");
         Assert.assertTrue(out.toString().endsWith("Thank you! Enjoy the book\r\n"));
         bookService.checkoutBook(2l);
         Assert.assertTrue(out.toString().endsWith("That book is not available.\r\n"));
@@ -53,6 +52,12 @@ public class BookServiceTest {
 
     @Test
     public void testResturn() {
-
+        bookService.returnBook(1l);
+        Assert.assertTrue(out.toString().endsWith("That is not a valid book to return.\r\n"));
+        bookService.returnBook(2l);
+        Assert.assertTrue(out.toString().endsWith("Thank you for returning the book.\r\n"));
+        when(bookRepository.find(-100l)).thenReturn(null);
+        bookService.returnBook(-100l);
+        Assert.assertTrue(out.toString().endsWith("That is not a valid book to return.\r\n"));
     }
 }

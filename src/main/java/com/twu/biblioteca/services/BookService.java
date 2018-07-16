@@ -29,4 +29,17 @@ public class BookService {
         }
         System.out.print("That book is not available.\r\n");
     }
+
+    public void returnBook(long id) {
+        Book book = bookRepository.find(id);
+        if (book!=null){
+            BookStatus status = book.getStatus();
+            if (status.getClass().equals(BookBeenLentedStaus.class)) {
+                book.setStatus(new BookAvailableStatus());
+                System.out.print("Thank you for returning the book.\r\n");
+                return;
+            }
+        }
+        System.out.print("That is not a valid book to return.\r\n");
+    }
 }
