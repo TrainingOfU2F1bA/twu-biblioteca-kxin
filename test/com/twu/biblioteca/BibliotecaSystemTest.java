@@ -42,7 +42,7 @@ public class BibliotecaSystemTest {
     @Test
     public void testDisplayBookList() {
         bibliotecaSystem.displayBookList();
-        Assert.assertEquals(outputStream.toString(),"Book Name:The Wealth of the Nations\r\nauthor:Adam Smith\r\nPublish Year:2012\r\n\r\n" +
-                "Book Name:Moral Sentiment Theory\\r\\nauthor:Adam Smith\\r\\nPublish Year:2012\\r\\n\\r\\n\"");
+        Assert.assertEquals(outputStream.toString(),"Book Name:The Wealth of the Nations\r\nAuthor:Adam Smith\r\nPublish Year:2012\r\n\r\n" +
+                "Book Name:Moral Sentiment Theory\r\nAuthor:Adam Smith\r\nPublish Year:2012\r\n\r\n");
     }
 }

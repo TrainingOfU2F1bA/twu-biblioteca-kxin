@@ -20,6 +20,12 @@ public class BibliotecaSystem {
 
 
     public void displayBookList() {
+        bookRepository.list().forEach(book -> {
+            System.out.println("Book Name:"+book.getBookName());
+            System.out.println("Author:"+book.getAuthorName());
+            System.out.println("Publish Year:"+book.getPublishDate().getYear());
+            System.out.println();
+        });
 
     }
 
