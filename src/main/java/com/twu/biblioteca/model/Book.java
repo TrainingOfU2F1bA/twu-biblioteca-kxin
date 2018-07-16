@@ -25,6 +25,22 @@ public class Book {
         this.publishDate = publishDate;
     }
 
+    public Book(Long id, String bookName, String authorName, Date publishDate, BookStatus status) {
+        this.id = id;
+        this.bookName = bookName;
+        this.authorName = authorName;
+        this.publishDate = publishDate;
+        this.status = status;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public BookStatus getStatus() {
         return status;
     }

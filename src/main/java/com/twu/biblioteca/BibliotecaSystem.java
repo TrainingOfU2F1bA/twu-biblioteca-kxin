@@ -1,36 +1,37 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.repositories.BookRepository;
+import com.twu.biblioteca.services.BookService;
+import com.twu.biblioteca.services.OptionalItem;
 
-import java.util.Scanner;
+import java.util.List;
 
 public class BibliotecaSystem {
     public static final String WELCOME_BIBLIOTECA_SYSTEM = "WELCOME BIBLIOTECA SYSTEM!\r\n";
-    private BookRepository bookRepository;
+    private BookService bookService;
     private BibliotecaScanner scanner;
+    private List<OptionalItem> optionalItems;
 
-    public BookRepository getBookRepository() {
-        return bookRepository;
+    public List<OptionalItem> getOptionalItems() {
+        return optionalItems;
     }
 
-    public void setBookRepository(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
+    public void setOptionalItems(List<OptionalItem> optionalItems) {
+        this.optionalItems = optionalItems;
     }
+
+    public BookService getBookService() {
+        return bookService;
+    }
+
+    public void setBookService(BookService bookService) {
+        this.bookService = bookService;
+    }
+
 
     public void welcome() {
         System.out.print(WELCOME_BIBLIOTECA_SYSTEM);
     }
 
-
-    public void displayBookList() {
-        bookRepository.list().forEach(book -> {
-            System.out.println("Book Name:"+book.getBookName());
-            System.out.println("Author:"+book.getAuthorName());
-            System.out.println("Publish Year:"+book.getPublishDate().getYear());
-            System.out.println();
-        });
-
-    }
 
     public void setScanner(BibliotecaScanner scanner) {
         this.scanner = scanner;
@@ -46,12 +47,13 @@ public class BibliotecaSystem {
     }
 
     public void mainMenu() {
-        System.out.print("1.List Books\r\n");
+        System.out.print("1.List Books\r\n2.Return Books\r\n3.Checkout Books");
     }
 
-    public void chooseItem() {
-        int i = scanner.readInt();
-        if (i==1) displayBookList();
-        else warningValidOption();
+    public int chooseItem() {
+        final int index = scanner.readInt();
+        if (optionalItems.size()>index) return optionalItems.get(index).service(bookService,scanner);
+        warningValidOption();
+        return 1;
     }
 }

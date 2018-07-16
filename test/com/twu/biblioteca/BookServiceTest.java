@@ -20,9 +20,14 @@ import static org.mockito.Mockito.when;
 
 public class BookServiceTest {
 
+    public static final String THANK_YOU_ENJOY_THE_BOOK = "Thank you! Enjoy the book\r\n";
+    public static final String THAT_BOOK_IS_NOT_AVAILABLE = "That book is not available.\r\n";
+    public static final String THAT_IS_NOT_A_VALID_BOOK_TO_RETURN = "That is not a valid book to return.\r\n";
+    public static final String THANK_YOU_FOR_RETURNING_THE_BOOK = "Thank you for returning the book.\r\n";
     private ByteArrayOutputStream out = new ByteArrayOutputStream();
     private BookRepository bookRepository;
     private BookService bookService;
+
 
     @Before
     public void setUp() {
@@ -42,22 +47,22 @@ public class BookServiceTest {
     @Test
     public void testCheckout() {
         bookService.checkoutBook(1l);
-        Assert.assertTrue(out.toString().endsWith("Thank you! Enjoy the book\r\n"));
+        Assert.assertTrue(out.toString().endsWith(THANK_YOU_ENJOY_THE_BOOK));
         bookService.checkoutBook(2l);
-        Assert.assertTrue(out.toString().endsWith("That book is not available.\r\n"));
+        Assert.assertTrue(out.toString().endsWith(THAT_BOOK_IS_NOT_AVAILABLE));
         when(bookRepository.find(-100l)).thenReturn(null);
         bookService.checkoutBook(-100l);
-        Assert.assertTrue(out.toString().endsWith("That book is not available.\r\n"));
+        Assert.assertTrue(out.toString().endsWith(THAT_BOOK_IS_NOT_AVAILABLE));
     }
 
     @Test
     public void testResturn() {
         bookService.returnBook(1l);
-        Assert.assertTrue(out.toString().endsWith("That is not a valid book to return.\r\n"));
+        Assert.assertTrue(out.toString().endsWith(THAT_IS_NOT_A_VALID_BOOK_TO_RETURN));
         bookService.returnBook(2l);
-        Assert.assertTrue(out.toString().endsWith("Thank you for returning the book.\r\n"));
+        Assert.assertTrue(out.toString().endsWith(THANK_YOU_FOR_RETURNING_THE_BOOK));
         when(bookRepository.find(-100l)).thenReturn(null);
         bookService.returnBook(-100l);
-        Assert.assertTrue(out.toString().endsWith("That is not a valid book to return.\r\n"));
+        Assert.assertTrue(out.toString().endsWith(THAT_IS_NOT_A_VALID_BOOK_TO_RETURN));
     }
 }
