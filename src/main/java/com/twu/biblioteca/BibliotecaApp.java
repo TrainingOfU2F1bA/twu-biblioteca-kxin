@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.repositories.BookRepositoryImpl1;
+import com.twu.biblioteca.repositories.BookRepositoryImpl;
 import com.twu.biblioteca.services.*;
 
 import java.util.List;
@@ -14,7 +14,7 @@ public class BibliotecaApp {
                 new QuickItem(), new BookListItem(), new BookCheoutItem(), new BookReturnItem()).collect(Collectors.toList());
         BibliotecaSystem system = new BibliotecaSystem();
         BookService service = new BookService();
-        service.setBookRepository(new BookRepositoryImpl1());
+        service.setBookRepository(new BookRepositoryImpl());
         systemInit(optionalItems, system, service);
         do {
             system.mainMenu();

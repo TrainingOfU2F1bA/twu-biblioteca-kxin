@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-public class BookRepositoryImpl1 implements BookRepository {
+public class BookRepositoryImpl implements BookRepository {
     List<Book> books = Arrays.asList(
             new Book(1l, "The Wealth of the Nations", "Adam Smith", new Date(2012, 1, 1), new BookAvailableStatus()),
             new Book(2l, "Moral Sentiment Theory", "Adam Smith", new Date(2012, 1, 1), new BookBeenLentedStaus())
