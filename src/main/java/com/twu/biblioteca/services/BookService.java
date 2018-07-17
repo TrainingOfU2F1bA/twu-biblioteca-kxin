@@ -6,7 +6,6 @@ import com.twu.biblioteca.model.BookStatus;
 import com.twu.biblioteca.model.status.BookAvailableStatus;
 import com.twu.biblioteca.model.status.BookBeenLentedStaus;
 import com.twu.biblioteca.repositories.BookRepository;
-import javafx.beans.binding.StringExpression;
 
 public class BookService {
     public static final String BOOK_NAME_S_AUTHOR_S_PUBLISH_YEAR_S = "Book Name:%s\r\nAuthor:%s\r\nPublish Year:%s\r\n\r\n";

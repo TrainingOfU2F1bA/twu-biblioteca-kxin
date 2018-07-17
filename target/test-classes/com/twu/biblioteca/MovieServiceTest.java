@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.repositories.MovieRepository;
 import com.twu.biblioteca.repositories.MovieRepositoryImpl;
 import com.twu.biblioteca.services.MovieService;
 import org.junit.Assert;
@@ -35,7 +34,6 @@ public class MovieServiceTest {
     public void testCheckOut() {
         service.checkoutMovie(1l);
         Assert.assertTrue(out.toString().endsWith("Just Enjoy the Movie at Home!\r\n"));
-//        Assert.assertEquals(out.toString(),"ss");
         service.checkoutMovie(-8l);
         Assert.assertTrue(out.toString().endsWith("Invalid Movie ID!\r\n"));
     }

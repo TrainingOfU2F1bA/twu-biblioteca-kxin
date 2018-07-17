@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.repositories.MovieRepository;
 import com.twu.biblioteca.repositories.MovieRepositoryImpl;
 import com.twu.biblioteca.services.MovieService;
 import org.junit.Assert;
