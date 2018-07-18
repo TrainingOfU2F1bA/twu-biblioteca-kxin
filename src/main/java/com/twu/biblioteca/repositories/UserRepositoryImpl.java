@@ -3,7 +3,6 @@ package com.twu.biblioteca.repositories;
 import com.twu.biblioteca.model.User;
 
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 public class UserRepositoryImpl implements UserRepository {
