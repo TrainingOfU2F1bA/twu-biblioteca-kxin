@@ -27,7 +27,7 @@ public class BookService {
                 .filter(book -> !book.getStatus().getClass().equals(BookBeenLentedStaus.class))
                 .forEach(book -> {
                     System.out.print(StringFormatter.format(BOOK_NAME_S_AUTHOR_S_PUBLISH_YEAR_S
-                            , book.getBookName(), book.getAuthorName(), book.getPublishDate().getYear()).get());
+                            , book.getName(), book.getAuthorName(), book.getPublishDate().getYear()).get());
                 });
     }
 

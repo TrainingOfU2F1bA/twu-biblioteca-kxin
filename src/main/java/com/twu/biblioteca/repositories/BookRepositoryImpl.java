@@ -27,7 +27,7 @@ public class BookRepositoryImpl implements BookRepository {
 
     @Override
     public Book findByName(String name) {
-        for (Book book : books) if (book.getBookName().equals(name)) return book;
+        for (Book book : books) if (book.getName().equals(name)) return book;
         return null;
     }
 

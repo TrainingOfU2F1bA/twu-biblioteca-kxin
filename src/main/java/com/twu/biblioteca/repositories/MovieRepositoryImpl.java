@@ -25,7 +25,7 @@ public class MovieRepositoryImpl implements MovieRepository {
 
     @Override
     public Movie findByName(String name) {
-        for (Movie movie : arrayList) if (movie.getMovieName().equals(name)) return movie;
+        for (Movie movie : arrayList) if (movie.getName().equals(name)) return movie;
         return null;
     }
 

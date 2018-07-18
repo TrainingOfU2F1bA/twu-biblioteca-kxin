@@ -13,7 +13,7 @@ public class MovieService {
     public void displayMovieList() {
         movieRepository.list().forEach(movie -> {
             System.out.print(StringFormatter.format("ID:%s\r\nMovie Name:%s\r\nDirector:%s\r\nRating:%s\r\nRelease Year:%s\r\n\r\n"
-                    , movie.getId(), movie.getMovieName(), movie.getDirect(), movie.getRating(), movie.getReleaseTime().getYear()).get()
+                    , movie.getId(), movie.getName(), movie.getDirect(), movie.getRating(), movie.getReleaseTime().getYear()).get()
             );
         });
     }

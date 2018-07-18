@@ -2,9 +2,7 @@ package com.twu.biblioteca.model;
 
 import java.util.Date;
 
-public class Book {
-    private Long id;
-    private String bookName;
+public class Book extends RentalGoods{
     private String authorName;
     private Date publishDate;
     private BookStatus status;
@@ -13,21 +11,21 @@ public class Book {
     }
 
     public Book(String bookName, String authorName, Date publishDate) {
-        this.bookName = bookName;
+        this.name = bookName;
         this.authorName = authorName;
         this.publishDate = publishDate;
     }
 
     public Book(Long id, String bookName, String authorName, Date publishDate) {
         this.id = id;
-        this.bookName = bookName;
+        this.name = bookName;
         this.authorName = authorName;
         this.publishDate = publishDate;
     }
 
     public Book(Long id, String bookName, String authorName, Date publishDate, BookStatus status) {
         this.id = id;
-        this.bookName = bookName;
+        this.name = bookName;
         this.authorName = authorName;
         this.publishDate = publishDate;
         this.status = status;
@@ -49,12 +47,12 @@ public class Book {
         this.status = status;
     }
 
-    public String getBookName() {
-        return bookName;
+    public String getName() {
+        return name;
     }
 
-    public void setBookName(String bookName) {
-        this.bookName = bookName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getAuthorName() {

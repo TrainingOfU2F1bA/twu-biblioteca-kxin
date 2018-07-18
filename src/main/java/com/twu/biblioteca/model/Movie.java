@@ -2,9 +2,7 @@ package com.twu.biblioteca.model;
 
 import java.util.Date;
 
-public class Movie {
-    Long id;
-    String movieName;
+public class Movie extends RentalGoods{
     String direct;
     String rating;
     Date ReleaseTime;
@@ -14,18 +12,18 @@ public class Movie {
 
     public Movie(Long id, String movieName, String direct, String rating, Date releaseTime) {
         this.id = id;
-        this.movieName = movieName;
+        this.name = movieName;
         this.direct = direct;
         this.rating = rating;
         ReleaseTime = releaseTime;
     }
 
-    public String getMovieName() {
-        return movieName;
+    public String getName() {
+        return name;
     }
 
-    public void setMovieName(String movieName) {
-        this.movieName = movieName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Long getId() {
