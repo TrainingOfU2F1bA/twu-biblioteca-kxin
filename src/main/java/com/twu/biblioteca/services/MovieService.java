@@ -1,6 +1,7 @@
 package com.twu.biblioteca.services;
 
 import com.sun.javafx.binding.StringFormatter;
+import com.twu.biblioteca.model.Movie;
 import com.twu.biblioteca.repositories.MovieRepository;
 
 public class MovieService {
@@ -18,9 +19,11 @@ public class MovieService {
         });
     }
 
-    public void checkoutMovie(long id) {
-        if (movieRepository.find(id)==null) {
+    public Movie checkoutMovie(long id) {
+        Movie movie = movieRepository.find(id);
+        if (movie ==null) {
             System.out.print("Invalid Movie ID!\r\n");
         }else System.out.print("Just Enjoy the Movie at Home!\r\n");
+        return movie;
     }
 }

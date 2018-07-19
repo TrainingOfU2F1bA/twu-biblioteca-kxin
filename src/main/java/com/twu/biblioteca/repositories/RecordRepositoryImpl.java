@@ -2,10 +2,8 @@ package com.twu.biblioteca.repositories;
 
 import com.twu.biblioteca.model.Record;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class RecordRepositoryImpl implements RecordRepository {
 
@@ -48,5 +46,21 @@ public class RecordRepositoryImpl implements RecordRepository {
     @Deprecated
     public void delete(Long id) {
         throw new RuntimeException();
+    }
+
+    @Override
+    public Record findRecordOfGoods(Long id) {
+        List<Record> list = map.values().stream().flatMap(Collection::stream).filter(goods -> goods.getRentalGoods().getId().equals(id)).collect(Collectors.toList());
+        if (list.size()==1) return list.get(0);
+        return null;
+    }
+
+    @Override
+    public void deleteRecord(String account, Long id) {
+        List<Record> list = map.values().stream().flatMap(Collection::stream).filter(goods -> goods.getRentalGoods().getId().equals(id)).collect(Collectors.toList());
+        if (list.size()==1) {
+            Record record = list.get(0);
+            map.get(record.getCustomer().getAccount()).remove(record);
+        }
     }
 }

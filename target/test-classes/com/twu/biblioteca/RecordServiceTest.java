@@ -61,4 +61,14 @@ public class RecordServiceTest {
                 "RentalGood Name:The Wealth of the Nations\r\n" +
                 "Good Class:com.twu.biblioteca.model.Book\r\n");
     }
+
+    @Test
+    public void testDeleteGoodsRentRecord() {
+//        Book book = new Book(3l, "The Wealth of the Nations", "Adam Smith", new Date(2012, 1, 1));
+//        Record record = new Record(tom, book);
+//        Mockito.when(recordRepository.findRecordOfGoods(3l)).thenReturn(record);
+        recordService.deteleGoodsRentRecord(tom.getAccount(),3l);
+        Mockito.verify(recordRepository,Mockito.times(1)).deleteRecord(tom.getAccount(),3l);
+    }
+
 }

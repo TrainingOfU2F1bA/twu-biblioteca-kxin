@@ -1,6 +1,7 @@
 package com.twu.biblioteca.services;
 
 import com.sun.javafx.binding.StringFormatter;
+import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.Customer;
 import com.twu.biblioteca.model.Record;
 import com.twu.biblioteca.model.RentalGoods;
@@ -26,5 +27,9 @@ public class RecordService {
                     "\r\n").getValue());
         });
         System.out.print(builder);
+    }
+
+    public void deteleGoodsRentRecord(String account, Long id) {
+        recordRepository.deleteRecord(account,id);
     }
 }

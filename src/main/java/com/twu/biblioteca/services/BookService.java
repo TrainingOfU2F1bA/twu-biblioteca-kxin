@@ -31,7 +31,7 @@ public class BookService {
                 });
     }
 
-    public void checkoutBook(long i) {
+    public Book checkoutBook(long i) {
         Book book = bookRepository.find(i);
         if (book == null) System.out.print(THAT_BOOK_IS_NOT_AVAILABLE);
         else {
@@ -39,9 +39,10 @@ public class BookService {
             if (status.getClass().equals(BookAvailableStatus.class)) book.setStatus(new BookBeenLentedStaus());
             System.out.print(status);
         }
+        return book;
     }
 
-    public void returnBook(long id) {
+    public Book returnBook(long id) {
         Book book = bookRepository.find(id);
         if (book == null || !book.getStatus().getClass().equals(BookBeenLentedStaus.class))
             System.out.print(THAT_IS_NOT_A_VALID_BOOK_TO_RETURN);
@@ -49,5 +50,6 @@ public class BookService {
             book.setStatus(new BookAvailableStatus());
             System.out.print(THANK_YOU_FOR_RETURNING_THE_BOOK);
         }
+        return book;
     }
 }
