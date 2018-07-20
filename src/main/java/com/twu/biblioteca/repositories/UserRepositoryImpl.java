@@ -1,5 +1,6 @@
 package com.twu.biblioteca.repositories;
 
+import com.twu.biblioteca.model.Customer;
 import com.twu.biblioteca.model.User;
 
 import java.util.Arrays;
@@ -7,9 +8,9 @@ import java.util.List;
 
 public class UserRepositoryImpl implements UserRepository {
     List<User> arrayList = Arrays.asList(
-            new User(1l,"Tom","010-8888",18,"123"),
-            new User(2l,"Marry","010-9999",16,"123"),
-            new User(3l,"Jack","010-6666",19,"123")
+            new Customer(1l,"Tom","010-8888",18,"123","9999882","123@.com"),
+            new Customer(2l,"Marry","010-9999",16,"123","9999882","123@.com"),
+            new Customer(3l,"Jack","010-6666",19,"123","9999882","123@.com")
     );
 
     @Override

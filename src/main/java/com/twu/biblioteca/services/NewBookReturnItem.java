@@ -10,12 +10,17 @@ public class NewBookReturnItem implements NewOptionalItem{
     private BookService bookService;
     private RecordService recordService;
 
+    public NewBookReturnItem(BookService bookService, RecordService recordService) {
+        this.bookService = bookService;
+        this.recordService = recordService;
+    }
+
     @Override
     public int run(User user) {
         System.out.println("Which Book do you want to return");
         int i = new BibliotecaScanner().readInt();
-        Book book = bookService.checkoutBook(i);
-        recordService.createRecord(book, (Customer) user);
-        return 1;
+        recordService.deteleGoodsRentRecord(user.getAccount(), (long) i);
+        Book book = bookService.returnBook(i);
+        return 3;
     }
 }

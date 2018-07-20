@@ -69,9 +69,14 @@ public class RecordServiceTest {
     }
 
     @Test
-    public void testFindGoodsRecord() {
+    public void testFindBookRecord() {
         Book book = new Book(3l, "The Wealth of the Nations", "Adam Smith", new Date(2012, 1, 1));
+        Movie movie = new Movie(1l, "Titan X", "James Chou", "A", new Date(1996, 1, 1));
         Record record = new Record(tom, book);
+        Record record1 = new Record(marry, movie);
         Mockito.when(recordRepository.findRecordOfGoods(3l)).thenReturn(record);
+        Mockito.when(recordRepository.findRecordOfGoods(4l)).thenReturn(record1);
+        Assert.assertEquals(recordService.findBookRecord(3l),record);
+        Assert.assertEquals(recordService.findBookRecord(4l),null);
     }
 }

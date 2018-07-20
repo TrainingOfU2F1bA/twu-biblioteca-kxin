@@ -1,7 +1,6 @@
 package com.twu.biblioteca.services;
 
 import com.twu.biblioteca.exception.AccountNotExistExcepetion;
-import com.twu.biblioteca.model.Customer;
 import com.twu.biblioteca.model.User;
 import com.twu.biblioteca.repositories.UserRepository;
 
